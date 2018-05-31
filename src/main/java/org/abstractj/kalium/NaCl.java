@@ -393,7 +393,7 @@ public class NaCl {
 
         int crypto_pwhash_str(
                 @Out byte[] buffer, @In byte[] passwd,
-                @In byte[] passwdlen, @In @u_int64_t long opslimit,
+                @In @u_int64_t passwdlen, @In @u_int64_t long opslimit,
                 @In @u_int64_t long memlimit);
 
         int crypto_pwhash_str_verify(
