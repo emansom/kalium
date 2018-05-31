@@ -371,6 +371,11 @@ public class NaCl {
 
         int CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE = 16777216;
 
+        int CRYPTO_PWHASH_STRBYTES = 128;
+
+        int CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE = 2;
+        int CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE = 67108864;
+
         int crypto_pwhash_scryptsalsa208sha256(
                 @Out byte[] buffer, @In @u_int64_t int outlen,
                 @In byte[] passwd,
@@ -385,6 +390,19 @@ public class NaCl {
         int crypto_pwhash_scryptsalsa208sha256_str_verify(
                 @In byte[] buffer, @In byte[] passwd,
                 @In @u_int64_t int passwdlen);
+
+        int crypto_pwhash_str(
+                @Out byte[] buffer, @In byte[] passwd,
+                @In byte[] passwdlen, @In @u_int64_t long opslimit,
+                @In @u_int64_t long memlimit);
+
+        int crypto_pwhash_str_verify(
+                @In byte[] buffer, @In byte[] passwd,
+                @In @u_int64_t int passwdlen);
+
+        int crypto_pwhash_str_needs_rehash(
+                @In byte[] buffer,
+                @In @u_int64_t long opslimit, @In @u_int64_t long memlimit);
 
         // ---------------------------------------------------------------------
         // Advanced: AES256-GCM
